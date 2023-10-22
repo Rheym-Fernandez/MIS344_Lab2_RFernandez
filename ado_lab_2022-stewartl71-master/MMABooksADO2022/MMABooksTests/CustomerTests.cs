@@ -18,7 +18,7 @@ namespace MMABooksTests
         public void SetUp()
         {
             def = new Customer();
-            c = new Customer(1, "Mickey Mouse", "Disneyland Dr.", "Anaheim", "CA", "12345");
+            c = new Customer(1, "Mickey, Mouse", "Disneyland Dr.", "Anaheim", "CA", "12345");
         }
 
         [Test]
@@ -34,12 +34,21 @@ namespace MMABooksTests
 
             Assert.IsNotNull(c);
             Assert.AreNotEqual(null, c.Name);
-            Assert.AreNotEqual("Mickey Mouse", c.Name);
-            Assert.AreEqual(null, c.Address);
-            Assert.AreEqual(null, c.City);
-            Assert.AreEqual(null, c.State);
-            Assert.AreEqual(null, c.ZipCode);
+            Assert.AreNotEqual(null, c.Name);
+            Assert.AreNotEqual(null, c.Address);
+            Assert.AreNotEqual(null, c.City);
+            Assert.AreNotEqual(null, c.State);
+            Assert.AreNotEqual(null, c.ZipCode);
 
+        }
+
+        [Test]
+
+        public void TestNameSetter()
+        {
+            c.Name = "Minnie, Mouse";
+            Assert.AreNotEqual("Mickey, Mouse", c.Name);
+            Assert.AreEqual("Minnie, Mouse", c.Name);
         }
 
 
