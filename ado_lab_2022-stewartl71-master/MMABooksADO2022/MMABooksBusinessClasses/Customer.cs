@@ -24,7 +24,7 @@ namespace MMABooksBusinessClasses
         private string address;
         private string city;
         private string state;
-        private string zipcode;
+        private int zipcode;
 
        
         public int CustomerID
@@ -59,13 +59,65 @@ namespace MMABooksBusinessClasses
         }
 
     
-        public string Address { get; set; }
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
 
-        public string City { get; set; }
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    address = value;
+                else throw new ArgumentOutOfRangeException("Address must be at least one character and no more than 100 characters.");
+            }
+        }
 
-        public string State { get; set; }
+        public string City
+        {
+            get
+            {
+                return city;
+            }
 
-        public string ZipCode { get; set; }
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    city = value;
+                else throw new ArgumentOutOfRangeException("City must be at least one character and no more than 100 characters.");
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return state;
+            }
+
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    state = value;
+                else throw new ArgumentOutOfRangeException("State must be at least one character and no more than 100 characters.");
+            }
+        }
+
+        public int ZipCode
+        {
+            get
+            {
+                return zipcode;
+            }
+
+            set
+            {
+                if (value > 0 && value <= 5)
+                    zipcode = value;
+                else throw new ArgumentOutOfRangeException("Zipcode cannot be more than 5 digits.");
+            }
+        }
 
         public override string ToString()
         {
