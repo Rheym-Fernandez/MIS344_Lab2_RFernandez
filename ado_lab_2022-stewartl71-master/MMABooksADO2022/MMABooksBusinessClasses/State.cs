@@ -43,5 +43,8 @@ namespace MMABooksBusinessClasses
         {
             return StateCode + ", " + StateName;
         }
+
+        //Lambda code that does the same as the toString fxn above
+        //public override string ToString() => StateCode + ", " + StateName;
     }
 }
