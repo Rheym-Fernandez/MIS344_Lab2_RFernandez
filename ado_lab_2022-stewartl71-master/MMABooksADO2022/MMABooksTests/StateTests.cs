@@ -4,7 +4,7 @@ using System;
 
 namespace MMABooksTests
 {
-    [TestFixture]
+    [TestFixture] //This denotes that a class contains unit tests
     public class StateTests
     {
 

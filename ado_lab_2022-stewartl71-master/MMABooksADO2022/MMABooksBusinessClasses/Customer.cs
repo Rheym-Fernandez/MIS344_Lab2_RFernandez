@@ -18,6 +18,14 @@ namespace MMABooksBusinessClasses
             ZipCode = zipcode;
         }
 
+        //instance variables
+        private int customerID;
+        private string name;
+        private string address;
+        private string city;
+        private string state;
+        private string zipcode;
+
         public int CustomerID { get; set; }
 
         public string Name { get; set; }
