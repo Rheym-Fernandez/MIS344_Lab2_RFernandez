@@ -26,10 +26,39 @@ namespace MMABooksBusinessClasses
         private string state;
         private string zipcode;
 
-        public int CustomerID { get; set; }
+       
+        public int CustomerID
+        {  
+            get
+            {
+                return customerID;
+            }
 
-        public string Name { get; set; }
+            set
+            {
+                if (value > 0)
+                    customerID = value;
+                else
+                    throw new ArgumentOutOfRangeException("Customer ID must be a positive number.");
+            }
+        }
 
+        public string Name 
+        {
+            get
+            {
+                return name;
+            }
+
+            set 
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    name = value;
+                else throw new ArgumentOutOfRangeException("Name must be at least one character and no more than 100 characters.");
+            }
+        }
+
+    
         public string Address { get; set; }
 
         public string City { get; set; }
