@@ -24,7 +24,7 @@ namespace MMABooksBusinessClasses
         private string address;
         private string city;
         private string state;
-        private int zipcode;
+        private string zipcode;
 
        
         public int CustomerID
@@ -104,7 +104,7 @@ namespace MMABooksBusinessClasses
             }
         }
 
-        public int ZipCode
+        public string ZipCode
         {
             get
             {
@@ -113,7 +113,7 @@ namespace MMABooksBusinessClasses
 
             set
             {
-                if (value > 0 && value <= 5)
+                if (value.Trim().Length > 0 && value.Trim().Length <= 5)
                     zipcode = value;
                 else throw new ArgumentOutOfRangeException("Zipcode cannot be more than 5 digits.");
             }

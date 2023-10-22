@@ -51,6 +51,13 @@ namespace MMABooksTests
             Assert.AreEqual("Minnie, Mouse", c.Name);
         }
 
+        [Test]
+
+        public void TestNameLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.Name = "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
+
 
     }
 }
