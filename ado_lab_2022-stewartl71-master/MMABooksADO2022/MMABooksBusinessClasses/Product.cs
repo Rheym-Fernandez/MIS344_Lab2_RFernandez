@@ -6,45 +6,87 @@ namespace MMABooksBusinessClasses
 {
     public class Product
     {
-        public State() { }
+        // there are several warnings in this file related to nullable properties and return values.
+        // you can ignore them
+        public Product() { }
 
-        public State(string code, string name)
+        public Product(int code, string description, string price, string quantity)
         {
-            StateCode = code;
-            StateName = name;
+            ProductCode = code;
+            Description = description;
+            UnitPrice = price;
+            OnHandQuantity = quantity;
         }
 
-        // this is an auto implemented property
-        // it effectively creates a private instance variable
-        // and creates "the usual" getter and setter
-        // You can't use it when you're doing validation on a property
-        public string StateName { get; set; }
+        //instance variables
+        private int code;
+        private string description;
+        private string price;
+        private string quantity;
 
-        private string stateCode;
-        public string StateCode
+
+        public int ProductCode
         {
             get
             {
-                return stateCode;
+                return code;
             }
+
             set
             {
-                // this would normally be == 2 but there's some bad data in the database
-                // I didn't realize that until I wrote the test for GetStates in StateDB
-                if (value.Length <= 2)
-                    stateCode = value.ToUpper();
+                if (value > 0)
+                    code = value;
                 else
-                    throw new ArgumentOutOfRangeException("The state code must be exactly 2 characters.");
+                    throw new ArgumentOutOfRangeException("Product Code must be a positive integer.");
             }
         }
 
-        public override string ToString()
+        public string Description
         {
-            return StateCode + ", " + StateName;
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    description = value;
+                else throw new ArgumentOutOfRangeException("The description must be at least one character and no more than 100 characters.");
+            }
         }
 
-        //Lambda code that does the same as the toString fxn above
-        //public override string ToString() => StateCode + ", " + StateName;
+
+        public string UnitPrice
+        {
+            get
+            {
+                return price;
+            }
+
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    price = value;
+                else throw new ArgumentOutOfRangeException("The price must be at least one character and no more than 100 characters.");
+            }
+        }
+
+        public string OnHandQuantity
+        {
+            get
+            {
+                return quantity;
+            }
+
+            set
+            {
+                if (value.Trim().Length > 0 && value.Trim().Length <= 100)
+                    quantity = value;
+                else throw new ArgumentOutOfRangeException("On Hand Quantity must be at least one character and no more than 100 characters.");
+            }
+        }
+
+     
     }
-}
 }
