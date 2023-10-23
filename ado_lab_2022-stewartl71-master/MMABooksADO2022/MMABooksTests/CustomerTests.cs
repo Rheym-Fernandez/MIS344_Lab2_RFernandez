@@ -44,20 +44,65 @@ namespace MMABooksTests
 
         [Test]
 
-        public void TestNameSetter()
+        public void TestAddressSetter()
         {
-            c.Name = "Minnie, Mouse";
-            Assert.AreNotEqual("Mickey, Mouse", c.Name);
-            Assert.AreEqual("Minnie, Mouse", c.Name);
+            c.Address = "Disney Street";
+            Assert.AreNotEqual("Disneyland Dr.", c.Address);
+            Assert.AreEqual("Disney Street", c.Address);
         }
 
         [Test]
 
-        public void TestNameLength()
+        public void TestAddressLength()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => c.Name = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.Address = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
         }
 
+        [Test]
+        public void TestCitySetter()
+        {
+            c.City = "Universal City";
+            Assert.AreNotEqual("Anaheim", c.City);
+            Assert.AreEqual("Universal City", c.City);
+        }
+
+        [Test]
+
+        public void TestCityLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.City = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
+
+        [Test]
+
+        public void TestStateSetter()
+        {
+            c.State = "OR";
+            Assert.AreNotEqual("CA", c.State);
+            Assert.AreEqual("OR", c.State);
+        }
+
+        [Test]
+
+        public void TestStateLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.State = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
+
+        [Test]
+        public void TestZipCodeSetter()
+        {
+            c.ZipCode = "23456";
+            Assert.AreNotEqual("12345", c.ZipCode);
+            Assert.AreEqual("23456", c.ZipCode);
+        }
+
+        [Test]
+
+        public void TestZipCodeLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.ZipCode = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
 
     }
 }
