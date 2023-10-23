@@ -136,48 +136,32 @@ namespace MMABooksDBClasses
             }
         }
 
-        public static bool UpdateCustomer(Customer oldCustomer,
-            Customer newCustomer)
+        public static bool UpdateProduct(Product oldProduct,
+           Product newProduct)
         {
             // create a connection
             MySqlConnection connection = MMABooksDB.GetConnection();
             string updateStatement =
-                "UPDATE Customers SET " +
-                "Name = @NewName, " +
-                "Address = @NewAddress, " +
-                "City = @NewCity, " +
-                "State = @NewState, " +
-                "ZipCode = @NewZipCode " +
-                "WHERE CustomerID = @OldCustomerID " +
-                "AND Name = @OldName " +
-                "AND Address = @OldAddress " +
-                "AND City = @OldCity " +
-                "AND State = @OldState " +
-                "AND ZipCode = @OldZipCode";
+                "UPDATE Products SET " +
+                "Description = @Description, " +
+                "UnitPrice = @UnitPrice, " +
+                "OnHandQuantity = @OnHandQuantity,";
+
             // setup the command object
             MySqlCommand updateCommand = new MySqlCommand(updateStatement, connection);
             updateCommand.Parameters.AddWithValue(
-                "@Name", oldCustomer.Name);
+                "@Description", oldProduct.Description);
             updateCommand.Parameters.AddWithValue(
-                "@Address", oldCustomer.Address);
+                "@UnitPrice", oldProduct.UnitPrice);
             updateCommand.Parameters.AddWithValue(
-                "@City", oldCustomer.City);
-            updateCommand.Parameters.AddWithValue(
-                "@State", oldCustomer.State);
-            updateCommand.Parameters.AddWithValue(
-                "@ZipCode", oldCustomer.ZipCode);
+                "@OnHandQuantity", oldProduct.OnHandQuantity);
 
             updateCommand.Parameters.AddWithValue(
-             "@Name", newCustomer.Name);
+             "@Description", newProduct.Description);
             updateCommand.Parameters.AddWithValue(
-                "@Address", newCustomer.Address);
+                "@UnitPrice", newProduct.UnitPrice);
             updateCommand.Parameters.AddWithValue(
-                "@City", newCustomer.City);
-            updateCommand.Parameters.AddWithValue(
-                "@State", newCustomer.State);
-            updateCommand.Parameters.AddWithValue(
-                "@ZipCode", newCustomer.ZipCode);
-
+                "@OnHandQuantity", newProduct.OnHandQuantity);
             try
             {
                 // open the connection
@@ -207,5 +191,4 @@ namespace MMABooksDBClasses
 
         }
     }
-}
 }
