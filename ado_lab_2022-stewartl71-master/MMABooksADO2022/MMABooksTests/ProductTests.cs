@@ -38,18 +38,18 @@ namespace MMABooksTests
 
         [Test]
 
-        public void TestNameSetter()
+        public void TestDescriptionSetter()
         {
-            c.Name = "Minnie, Mouse";
-            Assert.AreNotEqual("Mickey, Mouse", c.Name);
-            Assert.AreEqual("Minnie, Mouse", c.Name);
+            c.Description = "Test Item 2";
+            Assert.AreNotEqual("Test Item", c.Description);
+            Assert.AreEqual("Test Item 2", c.Description);
         }
 
         [Test]
 
-        public void TestNameLength()
+        public void TestDescriptionLength()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => c.Name = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.Description = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
         }
 
 
