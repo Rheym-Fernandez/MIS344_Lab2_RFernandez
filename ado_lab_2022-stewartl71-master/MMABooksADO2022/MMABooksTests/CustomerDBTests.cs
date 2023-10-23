@@ -32,5 +32,6 @@ namespace MMABooksTests
             c = CustomerDB.GetCustomer(customerID);
             Assert.AreEqual("Goofy", c.Name);
         }
+
     }
 }
