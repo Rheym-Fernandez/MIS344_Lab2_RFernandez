@@ -25,19 +25,14 @@ namespace MMABooksTests
         public void TestConstructor()
         {
             Assert.IsNotNull(def);
-            Assert.AreEqual(null, def.Name);
-            Assert.AreEqual(null, def.Address);
-            Assert.AreEqual(null, def.City);
-            Assert.AreEqual(null, def.State);
-            Assert.AreEqual(null, def.ZipCode);
+            Assert.AreEqual(null, def.Description);
+            Assert.AreEqual(null, def.UnitPrice);
+            Assert.AreEqual(null, def.OnHandQuantity);
 
             Assert.IsNotNull(c);
-            Assert.AreNotEqual(null, c.Name);
-            Assert.AreNotEqual(null, c.Name);
-            Assert.AreNotEqual(null, c.Address);
-            Assert.AreNotEqual(null, c.City);
-            Assert.AreNotEqual(null, c.State);
-            Assert.AreNotEqual(null, c.ZipCode);
+            Assert.AreNotEqual(null, c.Description);
+            Assert.AreNotEqual(null, c.UnitPrice);
+            Assert.AreNotEqual(null, c.OnHandQuantity);
 
         }
 
