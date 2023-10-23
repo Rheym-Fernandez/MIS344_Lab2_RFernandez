@@ -71,9 +71,9 @@ namespace MMABooksTests
 
         public void TestOnHandQuantitySetter()
         {
-            c.Description = "1000";
-            Assert.AreNotEqual("100", c.OnHandQuantity);
-            Assert.AreEqual("1000", c.OnHandQuantity);
+            c.Description = "100";
+            Assert.AreNotEqual("1000", c.OnHandQuantity);
+            Assert.AreEqual("100", c.OnHandQuantity);
         }
 
         [Test]
