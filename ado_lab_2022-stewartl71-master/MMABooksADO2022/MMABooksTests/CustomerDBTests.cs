@@ -22,7 +22,7 @@ namespace MMABooksTests
         public void TestCreateCustomer()
         {
             Customer c = new Customer();
-            c.Name = "Mickey Mouse";
+            c.Name = "Goofy";
             c.Address = "101 Main Street";
             c.City = "Orlando";
             c.State = "FL";
@@ -30,7 +30,7 @@ namespace MMABooksTests
 
             int customerID = CustomerDB.AddCustomer(c);
             c = CustomerDB.GetCustomer(customerID);
-            Assert.AreEqual("Mickey Mouse", c.Name);
+            Assert.AreEqual("Goofy", c.Name);
         }
     }
 }
