@@ -96,6 +96,7 @@ namespace MMABooksDBClasses
 
         public static bool DeleteCustomer(Customer customer)
         {
+
             // get a connection to the database
             MySqlConnection connection = MMABooksDB.GetConnection();
             string deleteStatement =
@@ -107,29 +108,52 @@ namespace MMABooksDBClasses
                 "AND State = @State " +
                 "AND ZipCode = @ZipCode";
             // set up the command object
-
+            MySqlCommand deleteCommand =
+                new MySqlCommand(deleteStatement, connection);
+            deleteCommand.Parameters.AddWithValue(
+                "@Name", customer.Name);
+            deleteCommand.Parameters.AddWithValue(
+                "@Address", customer.Address);
+            deleteCommand.Parameters.AddWithValue(
+                "@City", customer.City);
+            deleteCommand.Parameters.AddWithValue(
+                "@State", customer.State);
+            deleteCommand.Parameters.AddWithValue(
+                "@ZipCode", customer.ZipCode);
             try
             {
                 // open the connection
-                // execute the command
+                connection.Open();
+                // execute the command.ExecuteNonQuery();
+                int rows = deleteCommand.ExecuteNonQuery();
                 // if the number of records returned = 1, return true otherwise return false
+
+                if (rows == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (MySqlException ex)
             {
                 // throw the exception
+                throw ex;
             }
             finally
             {
                 // close the connection
+                connection.Close();
             }
-
-            return false;
         }
 
         public static bool UpdateCustomer(Customer oldCustomer,
             Customer newCustomer)
         {
             // create a connection
+            MySqlConnection connection = MMABooksDB.GetConnection();
             string updateStatement =
                 "UPDATE Customers SET " +
                 "Name = @NewName, " +
