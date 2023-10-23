@@ -50,25 +50,22 @@ namespace MMABooksDBClasses
             }
         }
 
-        public static int AddCustomer(Customer customer)
+        public static int AddProduct(Product ID)
         {
             MySqlConnection connection = MMABooksDB.GetConnection();
             string insertStatement =
-                "INSERT Customers " +
-                "(Name, Address, City, State, ZipCode) " +
-                "VALUES (@Name, @Address, @City, @State, @ZipCode)";
+                "INSERT Products " +
+                "(Description, UnitPrice, OnHandQuantity) " +
+                "VALUES (@Description, @UnitPrice, @OnHandQuantity)";
             MySqlCommand insertCommand =
                 new MySqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue(
-                "@Name", customer.Name);
+                "@Description", ID.Description);
             insertCommand.Parameters.AddWithValue(
-                "@Address", customer.Address);
+                "@UnitPrice", ID.UnitPrice);
             insertCommand.Parameters.AddWithValue(
-                "@City", customer.City);
-            insertCommand.Parameters.AddWithValue(
-                "@State", customer.State);
-            insertCommand.Parameters.AddWithValue(
-                "@ZipCode", customer.ZipCode);
+                "@OnHandQuantity", ID.OnHandQuantity);
+            
             try
             {
                 connection.Open();
@@ -78,8 +75,8 @@ namespace MMABooksDBClasses
                     "SELECT LAST_INSERT_ID()";
                 MySqlCommand selectCommand =
                     new MySqlCommand(selectStatement, connection);
-                int customerID = Convert.ToInt32(selectCommand.ExecuteScalar());
-                return customerID;
+                int productCode = Convert.ToInt32(selectCommand.ExecuteScalar());
+                return productCode;
             }
             catch (MySqlException ex)
             {
