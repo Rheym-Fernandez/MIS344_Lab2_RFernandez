@@ -52,6 +52,35 @@ namespace MMABooksTests
             Assert.Throws<ArgumentOutOfRangeException>(() => c.Description = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
         }
 
+        [Test]
+        public void TestUnitPriceSetter()
+        {
+            c.UnitPrice = "1000.00";
+            Assert.AreNotEqual("50.00", c.UnitPrice);
+            Assert.AreEqual("1000.00", c.UnitPrice);
+        }
 
+        [Test]
+
+        public void TestUnitPriceLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.UnitPrice = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
+
+        [Test]
+
+        public void TestOnHandQuantitySetter()
+        {
+            c.Description = "1000";
+            Assert.AreNotEqual("100", c.OnHandQuantity);
+            Assert.AreEqual("1000", c.OnHandQuantity);
+        }
+
+        [Test]
+
+        public void TestOnHandQuantityLength()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => c.OnHandQuantity = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789");
+        }
     }
 }
