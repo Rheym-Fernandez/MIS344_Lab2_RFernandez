@@ -24,7 +24,7 @@ namespace MMABooksTests
             p.UnitPrice = "100.00";
             p.OnHandQuantity = "200";
 
-            int productCode = ProductDB.AddProduct(c);
+            int productCode = ProductDB.AddProduct(p);
             p = ProductDB.GetProduct(productCode);
             Assert.AreEqual("Test", p.Description);
         }
