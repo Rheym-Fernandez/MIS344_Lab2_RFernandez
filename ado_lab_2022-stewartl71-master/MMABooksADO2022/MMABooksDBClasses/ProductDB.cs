@@ -14,27 +14,26 @@ namespace MMABooksDBClasses
             MySqlConnection connection = MMABooksDB.GetConnection();
             string selectStatement
                 = "SELECT ProductCode, Description, UnitPrice, OnHandQuantity"
-                + "FROM Customers "
-                + "WHERE CustomerID = @CustomerID";
+                + "FROM Products "
+                + "WHERE ProductCode = @ProductCode";
             MySqlCommand selectCommand =
                 new MySqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@CustomerID", customerID);
+            selectCommand.Parameters.AddWithValue("@ProductCode", productCode);
 
             try
             {
                 connection.Open();
-                MySqlDataReader custReader =
+                MySqlDataReader prodReader =
                     selectCommand.ExecuteReader(CommandBehavior.SingleRow);
-                if (custReader.Read())
+                if (prodReader.Read())
                 {
-                    Customer customer = new Customer();
-                    customer.CustomerID = (int)custReader["CustomerID"];
-                    customer.Name = custReader["Name"].ToString();
-                    customer.Address = custReader["Address"].ToString();
-                    customer.City = custReader["City"].ToString();
-                    customer.State = custReader["State"].ToString();
-                    customer.ZipCode = custReader["ZipCode"].ToString();
-                    return customer;
+                    Product ID = new Product();
+                    ID.ProductCode = (int)prodReader["ProductCode"];
+                    ID.Description = prodReader["Description"].ToString();
+                    ID.UnitPrice = prodReader["UnitPrice"].ToString();
+                    ID.OnHandQuantity = prodReader["OnHandQuantity"].ToString();
+                
+                    return ID;
                 }
                 else
                 {
