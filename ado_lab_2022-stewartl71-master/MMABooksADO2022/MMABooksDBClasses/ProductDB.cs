@@ -88,32 +88,26 @@ namespace MMABooksDBClasses
             }
         }
 
-        public static bool DeleteCustomer(Customer customer)
+        public static bool DeleteProduct(Product ID)
         {
 
             // get a connection to the database
             MySqlConnection connection = MMABooksDB.GetConnection();
             string deleteStatement =
-                "DELETE FROM Customers " +
-                "WHERE CustomerID = @CustomerID " +
-                "AND Name = @Name " +
-                "AND Address = @Address " +
-                "AND City = @City " +
-                "AND State = @State " +
-                "AND ZipCode = @ZipCode";
+                "DELETE FROM Products " +
+                "WHERE ProductCode = @ProductCode " +
+                "AND Description = @Description " +
+                "AND UnitPrice = @UnitPrice " +
+                "AND OnHandQuantity = @Quantity";
             // set up the command object
             MySqlCommand deleteCommand =
                 new MySqlCommand(deleteStatement, connection);
             deleteCommand.Parameters.AddWithValue(
-                "@Name", customer.Name);
+                "@Description", ID.Description);
             deleteCommand.Parameters.AddWithValue(
-                "@Address", customer.Address);
+                "@UnitPrice", ID.UnitPrice);
             deleteCommand.Parameters.AddWithValue(
-                "@City", customer.City);
-            deleteCommand.Parameters.AddWithValue(
-                "@State", customer.State);
-            deleteCommand.Parameters.AddWithValue(
-                "@ZipCode", customer.ZipCode);
+                "@OnHandQuantity", ID.OnHandQuantity);
             try
             {
                 // open the connection
