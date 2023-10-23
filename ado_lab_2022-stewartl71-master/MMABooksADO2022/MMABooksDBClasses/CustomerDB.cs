@@ -127,7 +127,6 @@ namespace MMABooksDBClasses
                 // execute the command.ExecuteNonQuery();
                 int rows = deleteCommand.ExecuteNonQuery();
                 // if the number of records returned = 1, return true otherwise return false
-
                 if (rows == 1)
                 {
                     return true;
@@ -168,22 +167,56 @@ namespace MMABooksDBClasses
                 "AND State = @OldState " +
                 "AND ZipCode = @OldZipCode";
             // setup the command object
+            MySqlCommand updateCommand = new MySqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue(
+                "@Name", oldCustomer.Name);
+            updateCommand.Parameters.AddWithValue(
+                "@Address", oldCustomer.Address);
+            updateCommand.Parameters.AddWithValue(
+                "@City", oldCustomer.City);
+            updateCommand.Parameters.AddWithValue(
+                "@State", oldCustomer.State);
+            updateCommand.Parameters.AddWithValue(
+                "@ZipCode", oldCustomer.ZipCode);
+
+            updateCommand.Parameters.AddWithValue(
+             "@Name", newCustomer.Name);
+            updateCommand.Parameters.AddWithValue(
+                "@Address", newCustomer.Address);
+            updateCommand.Parameters.AddWithValue(
+                "@City", newCustomer.City);
+            updateCommand.Parameters.AddWithValue(
+                "@State", newCustomer.State);
+            updateCommand.Parameters.AddWithValue(
+                "@ZipCode", newCustomer.ZipCode);
+
             try
             {
                 // open the connection
+                connection.Open();
                 // execute the command
+                int rows = updateCommand.ExecuteNonQuery();
                 // if the number of records returned = 1, return true otherwise return false
+                if (rows == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (MySqlException ex)
             {
                 // throw the exception
+                throw ex;
             }
             finally
             {
                 // close the connection
+                connection.Close();
             }
 
-            return false;
         }
     }
 }
