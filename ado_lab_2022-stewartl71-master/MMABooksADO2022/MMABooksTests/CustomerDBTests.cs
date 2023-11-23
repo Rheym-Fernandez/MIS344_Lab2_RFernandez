@@ -44,6 +44,9 @@ namespace MMABooksTests
             c.City = "Test";
             c.State = "Test";
             c.ZipCode = "12345";
+
+            //Need to ask how to implement an update and then save it
+
             //CustomerDB.UpdateCustomer();
             //CustomerDB.SaveChanges();
             c = CustomerDB.GetCustomer(2);
@@ -54,9 +57,12 @@ namespace MMABooksTests
         [Test]
         public void TestDeleteCustomer()
          {
+            //Get the Customer first?
              Customer c = CustomerDB.GetCustomer(1);
-             //Assert.True(CustomerDB.DeleteCustomer());
-             //Assert.Throws<Exception>(() => db.Retrieve("Muhinyi, Mauda"));
+
+            //Why is DeleteCustomer not working in this context?
+            // Assert.True(CustomerDB.DeleteCustomer(1));
+             Assert.Throws<Exception>(() => CustomerDB.GetCustomer(1));
          }
 
         }
