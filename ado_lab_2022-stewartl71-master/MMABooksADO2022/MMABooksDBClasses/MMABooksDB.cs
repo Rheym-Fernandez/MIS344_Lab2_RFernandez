@@ -28,3 +28,4 @@ namespace MMABooksDBClasses
         }
     }
 }
+//using mysql server for nuget packages!!!

@@ -9,7 +9,7 @@ namespace MMABooksDBClasses
 {
     public static class ProductDB
     {
-        public static Product GetProduct(int productCode)
+        public static Product GetProduct(string productCode)
         {
             MySqlConnection connection = MMABooksDB.GetConnection();
             string selectStatement

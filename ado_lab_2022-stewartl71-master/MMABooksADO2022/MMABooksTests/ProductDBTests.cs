@@ -12,7 +12,7 @@ namespace MMABooksTests
         [Test]
         public void TestGetProducts()
         {
-            Product p = ProductDB.GetProduct(1);
+            Product p = ProductDB.GetProduct("A4CS");
             Assert.AreEqual(1, p.ProductCode);
         }
 
@@ -24,7 +24,7 @@ namespace MMABooksTests
             p.UnitPrice = "100.00";
             p.OnHandQuantity = "200";
 
-            int productCode = ProductDB.AddProduct(p);
+            string productCode = ProductDB.AddProduct(p).ToString();
             p = ProductDB.GetProduct(productCode);
             Assert.AreEqual("Test", p.Description);
         }
