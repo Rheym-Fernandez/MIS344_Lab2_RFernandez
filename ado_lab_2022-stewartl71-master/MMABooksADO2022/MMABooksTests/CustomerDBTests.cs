@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using MMABooksBusinessClasses;
 using MMABooksDBClasses;
+using MySqlX.XDevAPI.Relational;
 
 namespace MMABooksTests
 {
@@ -14,8 +15,8 @@ namespace MMABooksTests
         [Test]
         public void TestGetCustomer()
         {
-            Customer c = CustomerDB.GetCustomer(1);
-            Assert.AreEqual(1, c.CustomerID);
+            Customer c = CustomerDB.GetCustomer(2);
+            Assert.AreEqual(2, c.CustomerID);
         }
 
         [Test]
@@ -33,5 +34,31 @@ namespace MMABooksTests
             Assert.AreEqual("Goofy", c.Name);
         }
 
+        [Test]
+        public void TestUpdateCustomer()
+        {
+            Customer c = new Customer();
+            
+            c.Name = "Test";
+            c.Address = "Test";
+            c.City = "Test";
+            c.State = "Test";
+            c.ZipCode = "12345";
+            //CustomerDB.UpdateCustomer();
+            //CustomerDB.SaveChanges();
+            c = CustomerDB.GetCustomer(2);
+            Assert.AreEqual("Test", c.Address);
+
+        }
+       
+        [Test]
+        public void TestDeleteCustomer()
+         {
+             Customer c = CustomerDB.GetCustomer(1);
+             //Assert.True(CustomerDB.DeleteCustomer());
+             //Assert.Throws<Exception>(() => db.Retrieve("Muhinyi, Mauda"));
+         }
+
+        }
     }
-}
+    
